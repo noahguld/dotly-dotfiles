@@ -1,0 +1,139 @@
+#!/usr/bin/env bash
+
+parentDirectory="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
+dotfilesDirectory="$(cd "$( dirname "$parentDirectory" )" && pwd -P)"
+libDirectory="$parentDirectory/lib"
+
+source "$libDirectory/exit_status.sh"
+
+# lots of global variables in here, so just disable SC2034 for the entire file
+# shellcheck disable=SC2034
+true
+
+exit_status=$EX_SUCCESS
+
+# Options for commands
+TALK=true
+FORCE=false
+VERBOSE=false
+
+# Retrieve all the flags preceeding a subcommand
+while [[ $# -gt 0 ]]; do
+	if [[ $1 =~ ^- ]]; then
+		# Convert combined short options into multiples short options (e.g. `-qb' to `-q -b')
+		if [[ $1 =~ ^-[a-z]{2,} ]]; then
+			param=$1
+			shift
+			set -- "${param:0:2}" "-${param:2}" "$@"
+			unset param
+		fi
+		case $1 in
+			-h | --help)  cmd="help" ; shift; continue ;;
+			-q | --quiet) TALK=false ; shift; continue ;;
+			-f | --force) FORCE=true ; shift; continue ;;
+			-v | --verbose) VERBOSE=true ; shift; continue ;;
+			*)     err "$EX_USAGE" "Unknown option '$1'" ;;
+		esac
+	else
+		break
+	fi
+done
+
+[[ $# -gt 0 ]] || cmd="help"
+
+# Get the subcommand
+valid_commands=(install placeholder1 placeholder2 help)
+if [[ ! $cmd ]]; then
+	# We actually want literal matching of the rhs here, $1 shouldn't be a regexp
+	# shellcheck disable=SC2076
+	if [[ " ${valid_commands[*]} " =~ " $1 " ]]; then
+		cmd=$1
+		shift
+	fi
+	if [[ ! $cmd ]]; then
+		err "$EX_USAGE" "Unknown command '$1'"
+	fi
+fi
+
+# Get the arguments for the subcommand, also parse flags if there are any left
+while [[ $# -gt 0 ]]; do
+	if [[ $1 =~ ^- ]]; then
+		# Convert combined short options into multiples short options (e.g. `-qb' to `-q -b')
+		if [[ $1 =~ ^-[a-z]{2,} ]]; then
+			param=$1
+			shift
+			set -- "${param:0:2}" "-${param:2}" "$@"
+			unset param
+		fi
+		case $1 in
+			-h | --help)
+				cmd="help"
+				shift; continue ;;
+			-q | --quiet)
+				TALK=false
+				shift; continue ;;
+			-f | --force)
+				FORCE=true
+				shift; continue ;;
+			-v | --verbose)
+				VERBOSE=true
+				shift; continue ;;
+			*)     err "$EX_USAGE" "Unknown option '$1'" ;;
+		esac
+	fi
+
+	case $cmd in
+		install | placeholder1)
+			params+=("$1")
+			shift; continue ;;
+		placeholder2) err "$EX_USAGE" "The 'placeholder2' command does not take any arguments" ;;
+		help)
+			[[ ! $help_cmd ]] && help_cmd=$1
+			shift; continue;;
+		*) err "$EX_USAGE" "Unknown command '$1'" ;;
+	esac
+done
+
+# Include the file that implements the invoked command
+case $cmd in
+	#install)
+		# shellcheck source=lib/commands/install.sh
+		#source "$libDirectory/commands/install.sh" ;;
+	*)
+		# Don't know what will be included, so just disable the rule
+		# shellcheck disable=SC1090
+		source "$libDirectory/commands/$cmd.sh" ;;
+esac
+
+case $cmd in
+	help)  help $help_cmd ;;
+	*)
+		for param in "${params[@]}"; do
+			case $cmd in
+				install)
+					install "$param" ;;
+			esac
+			result=$?
+			if [[ $result == "$EX_USAGE" ]]; then
+				exit "$EX_USAGE"
+			fi
+			if [[ $exit_status == 0 && $result != 0 ]]; then
+				exit_status=$result
+			fi
+		done
+		#case $cmd in
+			#clone)
+				#symlink_cloned_files "${params[@]}" ;;
+			#refresh)
+				#pull_outdated $threshhold "${params[@]}" ;;
+			#pull)
+				#symlink_new_files "${params[@]}" ;;
+		#esac
+		result=$?
+		if [[ $exit_status == 0 && $result != 0 ]]; then
+			exit_status=$result
+		fi
+		;;
+esac
+
+exit $exit_status
