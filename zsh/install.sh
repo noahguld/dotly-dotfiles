@@ -10,11 +10,27 @@ function install {
         else
             info "zsh already installed"
         fi
+
         if ! brew ls --versions zsh-completions > /dev/null; then
             info "Installing zsh-completions"
             brew install zsh-completions
         else
             info "zsh-completions already installed"
+        fi
+
+        if ! brew ls --versions zsh-autosuggestions > /dev/null; then
+            info "Installing zsh-autosuggestions"
+            brew install zsh-autosuggestions
+        else
+            info "zsh-autosuggestions already installed"
+        fi
+
+        if ! brew ls --versions getantibody/tap/antibody > /dev/null; then
+            info "Installing getantibody/tap/antibody"
+            brew tap 'getantibody/tap'
+            brew install getantibody/tap/antibody
+        else
+            info "getantibody/tap/antibody already installed"
         fi
     fi
 

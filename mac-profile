@@ -1,6 +1,7 @@
 brew
-macos
-misc
+mac-defaults
+mac-misc
+dev-misc
 zsh
 vim
 git

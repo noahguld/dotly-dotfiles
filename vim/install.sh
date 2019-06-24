@@ -10,6 +10,7 @@ function install {
     if [ $OS = "OSX" ]; then
         if ! brew ls --versions neovim > /dev/null; then
             info "Installing neovim"
+            tap 'neovim/neovim'
             brew install neovim
         else
             info "neovim already installed"
