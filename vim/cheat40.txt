@@ -1,0 +1,73 @@
+VIMRC Key Mappings {{{2
+# Custom cheat40 extension for vim. See: https://github.com/lifepillar/vim-cheat40
+# The following are key mappings from the VIMRC
+# Columns 1–25 are the desscription
+# Columns 26-40 are the key sequence
+}}}
+misc {{{1
+Edit cheat40.txt (this)  <leader>rc    N
+Edit .vimrc              <leader>rv    N
+Edit init.vim            <leader>rn    N
+Switch to window below   <c-k>         N
+Switch to window above   <c-j>         N
+Switch to window left    <c-h>         N
+Switch to window right   <c-l>         N
+Switch to next tab       <c-Tab>       N
+Switch to prev tab       <c-s-Tab>     N
+Search using ag in vim   :Ags {pat}    N
+clang-format slec/file   :ClangFormat  N
+Edit corresponding h/cpp :A            N
+Add doxygen block to ele :Dox          N
+Del buffer w/o del spl   :BD           N
+}}}
+nerdtree {{{1
+Toggle NERDTree          <c-n>         N
+NERDTree Find File       <c-f>         N
+}}}
+nerdcommenter {{{1
+Comment line/selection   <leader>cs    N
+Uncomment line/selection <leader>cu    N
+}}}
+you-complete-me {{{1
+GetType under cursor     <leader>t     N
+GoToDefinition           <leader>df    N
+GoToDeclaration          <leader>dl    N
+}}}
+denite {{{1
+Find File                <c-p>         N
+Find Buffer              <c-b>         N
+Find Text                <Space>/      N
+Buffer line-up           <c-j>         N
+Buffer line-down         <c-k>         N
+Enter search buffer      <c-o>         N
+}}}
+tagbar {{{1
+Toggle TagBar            :TagBar       N
+}}}
+easy-motion {{{1
+Move to char             <leader>f     N
+Move to word             <leader>w     N
+Move to line             <leader>l     N
+}}}
+fugitive {{{1
+Open git status pane     :Gstatus      N
+# Add/Remove files using <->
+Open git commit pane     :Gcommit      N
+git push                 :Gpush        N
+git pull                 :Gpull        N
+Hunk undo                <leader>hu    N
+}}}
+abolish {{{1
+# Example
+# Replace
+#:%Subvert/facilit{y,ies}/building{,s}/g
+# Search
+#:%S/facilit{y,ies}
+Coerce to snake_case      crs          N
+Coerce to MizedCase       crm          N
+Coerce to camelCase       crc          N
+Coerce to UPPER_CASE      cru          N
+Coerce to dash-case       cr-          N
+Coerce to space case      cr<space>    N
+Coerce to Title Case      crt          N
+}}}
