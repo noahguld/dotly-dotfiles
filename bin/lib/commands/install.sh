@@ -18,11 +18,12 @@ function install {
     while IFS= read -r line
     do
 	local MODULE=$line
-	local MODULE_DIR="$CURRENT_PROFILE_DIR/$MODULE"
+	MODULE_DIR="$CURRENT_PROFILE_DIR/$MODULE"
 	info "Installing $MODULE from $MODULE_DIR"
 	if [ -d $MODULE_DIR ]; then
 	    local INSTALLER="$MODULE_DIR/install.sh"
 	    if [ -f $INSTALLER ]; then
+
 		info "Running $MODULE install() function"
 		source $INSTALLER && install
 		unset -f install

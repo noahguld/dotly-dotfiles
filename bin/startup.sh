@@ -1,6 +1,14 @@
 #!/bin/bash
 
-parentDirectory="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd -P)"
+SOURCE=$0
+while [ -h "$SOURCE" ]; do # resolve $SOURCE until the file is no longer a symlink
+  DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+  SOURCE="$(readlink "$SOURCE")"
+  [[ $SOURCE != /* ]] && SOURCE="$DIR/$SOURCE" # if $SOURCE was a relative symlink, we need to resolve it relative to the path where the symlink file was located
+done
+DIR="$( cd -P "$( dirname "$SOURCE" )" >/dev/null 2>&1 && pwd )"
+
+parentDirectory="$(cd "$( dirname "$0" )" && pwd -P)"
 dotfilesDirectory="$(cd "$( dirname "$parentDirectory" )" && pwd -P)"
 libDirectory="$parentDirectory/lib"
 
@@ -13,9 +21,14 @@ do
     local MODULE=$line
     local MODULE_DIR="$CURRENT_PROFILE_DIR/$MODULE"
     if [ -d $MODULE_DIR ]; then
-        local STARTUP_FILE="$MODULE_DIR/startup.sh"
-        if [ -f $STARTUP_FILE ]; then
-            source $STARTUP_FILE
-        fi
+      if [[ -e ${MODULE_DIR}/startup.sh ]]; then
+          source ${MODULE_DIR}/startup.sh
+      fi
+      if [[ -n "$BASH" ]] && [[ -e ${MODULE_DIR}/startup.bash ]]; then
+          source ${MODULE_DIR}/startup.bash
+      fi
+      if [[ -n "$ZSH_NAME" ]] && [[ -e ${MODULE_DIR}/startup.zsh ]]; then
+          source ${MODULE_DIR}/startup.zsh
+      fi
     fi
 done < "$input"

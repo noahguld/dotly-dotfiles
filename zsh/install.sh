@@ -1,5 +1,5 @@
 #!/bin/bash
 
 function install {
-    echo "Installing ZSH"
+    link_file $MODULE_DIR/.zshrc ~/.zshrc
 }

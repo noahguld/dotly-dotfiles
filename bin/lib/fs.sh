@@ -23,7 +23,8 @@ function link_file {
 	  skip=true;
     else
 	  pending "File already exists: $dst ($(basename "$src")), what do you want to do?" "[s]kip, [o]verwrite?"
-	  read -n 1 action
+	  read action </dev/tty
+	  #read -n 1 action
 
 	  case "$action" in
 	    o )

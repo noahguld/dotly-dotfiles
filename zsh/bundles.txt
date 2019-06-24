@@ -1,0 +1,15 @@
+mafredri/zsh-async
+RobSis/zsh-completion-generator
+marzocchi/zsh-notify
+Tarrasch/zsh-bd
+changyuheng/zsh-interactive-cd
+zsh-users/zsh-completions
+zsh-users/zsh-autosuggestions
+ael-code/zsh-colored-man-pages
+chrissicool/zsh-256color
+
+# these should be at last!
+sindresorhus/pure
+zsh-users/zsh-syntax-highlighting
+zsh-users/zsh-history-substring-search
+zpm-zsh/dircolors-material
