@@ -57,6 +57,4 @@ export VISUAL='nvim'
 alias ls='ls -G'
 export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
-export HOMEBREW_GITHUB_API_TOKEN=cf3ab7658d2b88ab6d53423254aba686eab4191f
-
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
