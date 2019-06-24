@@ -15,6 +15,8 @@ libDirectory="$parentDirectory/lib"
 CURRENT_PROFILE_FILE="$dotfilesDirectory/.current-profile"
 CURRENT_PROFILE_DIR="$(cd "$(dirname "$(readlink $CURRENT_PROFILE_FILE)" )" && pwd -P)"
 
+source $libDirectory/system.sh
+
 input=$CURRENT_PROFILE_FILE
 while IFS= read -r line
 do

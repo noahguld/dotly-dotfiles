@@ -2,9 +2,8 @@ cask_args appdir: '/Applications'
 
 tap 'homebrew/core'
 tap 'homebrew/bundle'
+tap 'homebrew/cask'
 tap "homebrew/cask-fonts"
-tap 'caskroom/cask'
-tap 'caskroom/fonts'
 # tap 'universal-ctags/universal-ctags'             # Migrated to dev-misc module
 # tap 'neovim/neovim'                               # Migrated to vim module
 # tap 'getantibody/tap'                             # Migrated to zsh module

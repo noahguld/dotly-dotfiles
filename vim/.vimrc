@@ -24,7 +24,6 @@ if empty(glob('~/.vim/autoload/plug.vim'))
 endif
 
 call plug#begin('~/.vim/plugged')
-Plug 'Shougo/denite.nvim', { 'do': ':UpdateRemotePlugins' } " Used for grep in project, <space>/ for word search, <C-p> for files
 Plug 'Valloric/YouCompleteMe', { 'do': './install.py --clang-completer --tern-completer', 'for': 'cpp' } "Autocomplete suggestions
 Plug 'Xuyuanp/nerdtree-git-plugin'                  " Git for NerdTree
 Plug 'airblade/vim-gitgutter'                       " Git in the gutter
@@ -57,6 +56,8 @@ Plug 'roman/golden-ratio'                           " Resize splits automaticall
 Plug 'christoomey/vim-tmux-navigator'				" Navigate between tmux panes and vim splits
 Plug 'sbdchd/neoformat'                             " Formatter that supports many file types
 Plug 'djoshea/vim-autoread'                         " Auto-reload files when the change on disk
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " C++
 Plug 'bfrg/vim-cpp-modern', { 'for': 'cpp' }        " Modern C++ syntax highlighing (replaces vim-cpp-enhanced-highlight)
@@ -237,36 +238,36 @@ let g:NERDTrimTrailingWhitespace = 1
 let g:NERDUsePlaceHolders=1
 let g:NERDTreeQuitOnOpen=1
 
-""""""""""
-" Denite "
-""""""""""
-" Switch file_rec to use ag
-call denite#custom#var('file_rec', 'command', ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
-" Ag command on grep source
-call denite#custom#var('grep', 'command', ['ag'])
-call denite#custom#var('grep', 'default_opts', ['-i', '--vimgrep'])
-call denite#custom#var('grep', 'recursive_opts', [])
-call denite#custom#var('grep', 'pattern_opt', [])
-call denite#custom#var('grep', 'separator', ['--'])
-call denite#custom#var('grep', 'final_opts', [])
-" Key mappings
-nnoremap <C-p> :Denite file_rec<cr>
-nnoremap <C-b> :Denite buffer<cr>
-nnoremap <space>/ :Denite grep:.<cr>
-call denite#custom#map('insert', '<C-j>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-n>', '<denite:move_to_next_line>', 'noremap')
-call denite#custom#map('insert', '<C-k>', '<denite:move_to_previous_line>', 'noremap')
-call denite#custom#map('insert', '<C-p>', '<denite:move_to_previous_line>', 'noremap')
+""""""""""""""""
+" fzf shorcuts "
+""""""""""""""""
+"   <c-p>      - CtrlP replacment
+"   <leader>be - BufExplorer replacment
+"   <leader>t  - Browse list tags
 
-""""""""""""
-" deoplete "
-""""""""""""
+" Show tags in fzf
+nnoremap <silent> <Leader>j :Tags<CR>
 
-"let g:deoplete#enable_at_startup=1
-"let g:deoplete#sources#clang#libclang_path='/Library/Developer/CommandLineTools/usr/lib/libclang.dylib'
-""let g:deoplete#sources#clang#libclang_path=system('mdfind -name libclang.dylib')
-"let g:deoplete#sources#clang#clang_header='/Library/Developer/CommandLineTools/usr/lib/clang'
-"let g:deoplete#sources#clang#clang_complete_database='~/dev/black-coral'
+" Show local tags in fzf
+nnoremap <silent> <Leader>t :BTags<CR>
+
+" Quickly switch to open buffer
+nnoremap <silent> <leader>be :Buffers<CR>
+
+nnoremap <silent> <leader><space> :Ag<CR>
+
+" Replacement for ctrlp
+nnoremap <silent> <C-p> :Files<CR>
+" CTRL + ALT(meta) + p will open the fuzzy finder just for the directory containing the currently edited file
+nnoremap <silent> <C-M-p> :Files <C-r>=expand("%:h")<CR>/<CR>
+
+" Fuzzy search for Git commits. Requires tpope/vim-fugitive
+let g:fzf_commits_log_options = '--graph --color=always
+  \ --format="%C(yellow)%h%C(red)%d%C(reset)
+  \ - %C(bold green)(%ar)%C(reset) %s %C(blue)<%an>%C(reset)"'
+
+nnoremap <silent> <leader>c  :Commits<CR>
+nnoremap <silent> <leader>bc :BCommits<CR>
 
 
 """""""""""

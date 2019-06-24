@@ -2,7 +2,7 @@
 
 function install {
     if [ $OS = "OSX" ]; then
-        brew-cask-install-with-tap "caskroom/cask" "visual-studio-code"
+        brew-cask-install-with-tap "homebrew/cask" "visual-studio-code"
     fi
 
     if test "$(which code)"; then
@@ -17,7 +17,7 @@ function install {
         #link_file "$MODULE_DIR/keybindings.json" "$VSCODE_HOME/User/keybindings.json"
         link_file "$MODULE_DIR/settings.json" "$VSCODE_HOME/User/settings.json"
 
-        echo "Installing vscode plugins"
+        info "Installing vscode plugins"
 
         # from `code --list-extensions`
         modules="

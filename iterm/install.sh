@@ -2,7 +2,7 @@
 
 function install {
     if [ $OS = "OSX" ]; then
-        brew-cask-install-with-tap "caskroom/cask" "iTerm2"
+        brew-cask-install-with-tap "homebrew/cask" "iTerm2"
 
         # Specify the preferences directory
         defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "${MODULES_DIR}/profile"
