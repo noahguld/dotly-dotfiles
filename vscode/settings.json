@@ -1,0 +1,13 @@
+{
+    "vim.otherModesKeyBindingsNonRecursive": [
+        {
+            "before": ["j"],
+            "after": ["g", "j"]
+        },
+        {
+            "before": ["k"],
+            "after": ["g", "k"]
+        }
+    ],
+    "window.zoomLevel": 0
+}

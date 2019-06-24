@@ -1,0 +1,21 @@
+---
+Checks:          '*
+    ,-modernize-use-equals-delete
+    ,-modernize-use-equals-default
+    ,-google-build-using-namespace
+    '
+WarningsAsErrors: '-*
+    ,clang-analyzer-*
+    ,cppcoreguidelines-pro-type-member-init
+    ,google-readability-namespace-comments
+    ,google-runtime-memset
+    ,llvm-namespace-comment
+    ,misc-move-constructor-init
+    ,misc-suspicious-*
+    ,misc-use-after-move
+    ,modernize-use-override
+    ,performance-unnecessary-copy-initialization
+    ,performance-unnecessary-value-param
+    '
+HeaderFilterRegex: ''
+AnalyzeTemporaryDtors: false

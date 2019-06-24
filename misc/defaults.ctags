@@ -1,0 +1,11 @@
+# Basic options
+--recurse=yes
+--tag-relative=yes
+--exclude=*.git*
+--exclude=*.pb
+--exclude=*.json
+--sort=yes
+# see man file for information on config letters
+--c++-kinds=+p
+--fields=+liaSt
+--extras=+qf
