@@ -9,8 +9,8 @@ tap "homebrew/cask-fonts"
 # tap 'getantibody/tap'                             # Migrated to zsh module
 
 #Fonts
-cask 'font-ubuntu'
-cask 'font-ubuntumono-nerd-font'
+# cask 'font-ubuntu'
+# cask 'font-ubuntumono-nerd-font'
 
 #Formulas
 # brew 'git'                                        # Migrated to git module

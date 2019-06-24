@@ -2,6 +2,8 @@
 
 function install {
     if [ $OS = "OSX" ]; then
+        brew-cask-install-with-tap "homebrew/cask" "font-ubuntu"
+        brew-cask-install-with-tap "homebrew/cask" "font-ubuntumono-nerd-font"
         brew-cask-install-with-tap "homebrew/cask" "iTerm2"
 
         # Specify the preferences directory
