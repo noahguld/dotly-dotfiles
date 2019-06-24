@@ -4,34 +4,10 @@ function install {
 
     # Install zsh
     if [ $OS = "OSX" ]; then
-        if ! brew ls --versions zsh > /dev/null; then
-            info "Installing zsh"
-            brew install zsh
-        else
-            info "zsh already installed"
-        fi
-
-        if ! brew ls --versions zsh-completions > /dev/null; then
-            info "Installing zsh-completions"
-            brew install zsh-completions
-        else
-            info "zsh-completions already installed"
-        fi
-
-        if ! brew ls --versions zsh-autosuggestions > /dev/null; then
-            info "Installing zsh-autosuggestions"
-            brew install zsh-autosuggestions
-        else
-            info "zsh-autosuggestions already installed"
-        fi
-
-        if ! brew ls --versions getantibody/tap/antibody > /dev/null; then
-            info "Installing getantibody/tap/antibody"
-            brew tap 'getantibody/tap'
-            brew install getantibody/tap/antibody
-        else
-            info "getantibody/tap/antibody already installed"
-        fi
+        brew-install "zsh"
+        brew-install "zsh-completions"
+        brew-install "zsh-autosuggestions"
+        brew-install-with-tap "getantibody/tap" "getantibody/tap/antibody"
     fi
 
     # Set zsh as the default shell

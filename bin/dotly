@@ -10,6 +10,7 @@ source "$libDirectory/system.sh"
 source "$libDirectory/exit_status.sh"
 source "$libDirectory/log.sh"
 source "$libDirectory/fs.sh"
+source "$libDirectory/brew-utils.sh"
 
 # lots of global variables in here, so just disable SC2034 for the entire file
 # shellcheck disable=SC2034

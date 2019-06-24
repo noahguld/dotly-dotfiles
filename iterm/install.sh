@@ -2,13 +2,7 @@
 
 function install {
     if [ $OS = "OSX" ]; then
-        if ! brew cask ls --versions iTerm2 > /dev/null; then
-            info "Installing iTerm2"
-            brew tap caskroom/cask
-            brew cask install iTerm2
-        else
-            info "iTerm2 already installed"
-        fi
+        brew-cask-install-with-tap "caskroom/cask" "iTerm2"
 
         # Specify the preferences directory
         defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "${MODULES_DIR}/profile"

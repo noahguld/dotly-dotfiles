@@ -8,13 +8,8 @@ function install {
     link_file $MODULE_DIR/cheat40.txt ~/.config/nvim/cheat40.txt
 
     if [ $OS = "OSX" ]; then
-        if ! brew ls --versions neovim > /dev/null; then
-            info "Installing neovim"
-            tap 'neovim/neovim'
-            brew install neovim
-        else
-            info "neovim already installed"
-        fi
+        brew-install "vim" "--with-override-system-vi"
+        brew-install-with-tap "neovim/neovim" "neovim"
     fi
 
     #nvim '+PlugInstall' '+qall'

@@ -2,13 +2,7 @@
 
 function install {
     if [ $OS = "OSX" ]; then
-        if ! brew cask ls --versions visual-studio-code > /dev/null; then
-            info "Installing vscode"
-            brew tap caskroom/cask
-            brew cask install visual-studio-code
-        else
-            info "vscode already installed"
-        fi
+        brew-cask-install-with-tap "caskroom/cask" "visual-studio-code"
     fi
 
     if test "$(which code)"; then

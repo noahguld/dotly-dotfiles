@@ -3,6 +3,7 @@
 Yet another work in progress dotfile manager
 
 > Inspired by [holman/dotfiles](https://github.com/holman/dotfiles) and [pearl-core](https://github.com/pearl-core/pearl/)
+
 > Dotly will be migrated to it's own repo, apart from my personal dotfiles, soon &trade;
 
 ## Install
@@ -13,15 +14,17 @@ cd ~/.config/dotly
 ./bin/dotly install ~/.config/dotly/profile-mac
 ```
 
+Note that Dotly can be installed anywhere and profiles can be seperate from dotly as well.
+
 ## About
 
 > More info coming soon
 
-A profile is simply a txt file listing modules to use. Installing a profile simply symlinks the text file to a `.current-profile` file which is then used in the rest of the installation process but also on shell startup. Any directory can be the base of user defined modules given that the profile file is at the root.
+A profile is simply a txt file listing modules to use. Installing a profile simply symlinks the text file to a `.current-profile` file at the root of dotly which is then used in the rest of the installation process as well as on shell startup. Any directory can be the base of user defined modules given that the profile file is at the root.
 
 Each module contains a `install.sh` script and a corresponding `install` function that is called when installed using dotly (other functionality to come).
 
-Optionally, each module can contain a `startup.sh/zsh` that is sourced on the corresponding shell's startup.
+Optionally, each module can contain a `startup.sh/zsh` that is sourced during the corresponding shell's startup.
 
 ## Coming Soon
 

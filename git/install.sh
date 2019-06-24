@@ -5,12 +5,8 @@ function install {
     link_file $MODULE_DIR/.gitignore_global ~/.gitignore_global
 
     if [ $OS = "OSX" ]; then
-        if ! brew ls --versions diff-so-fancy > /dev/null; then
-            info "Installing diff-so-fancy"
-            brew install diff-so-fancy
-        else
-            info "diff-so-fancy already installed"
-        fi
+        brew-install "git"
+        brew-install "diff-so-fancy"
     fi
 
     git config --global core.pager "diff-so-fancy | less --tabs=4 -RFX"
