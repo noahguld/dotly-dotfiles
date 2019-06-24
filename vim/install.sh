@@ -7,8 +7,14 @@ function install {
     link_file $MODULE_DIR/init.vim ~/.config/nvim/init.vim
     link_file $MODULE_DIR/cheat40.txt ~/.config/nvim/cheat40.txt
 
-    pip3 install setuptools
-    pip3 install --user neovim
+    if [ $OS = "OSX" ]; then
+        if ! brew ls --versions neovim > /dev/null; then
+            info "Installing neovim"
+            brew install neovim
+        else
+            info "neovim already installed"
+        fi
+    fi
 
-    nvim +PlugInstall +qall
+    #nvim '+PlugInstall' '+qall'
 }

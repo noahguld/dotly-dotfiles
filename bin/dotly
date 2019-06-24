@@ -6,6 +6,7 @@ libDirectory="$parentDirectory/lib"
 
 CURRENT_PROFILE_FILE="$dotfilesDirectory/.current-profile"
 
+source "$libDirectory/system.sh"
 source "$libDirectory/exit_status.sh"
 source "$libDirectory/log.sh"
 source "$libDirectory/fs.sh"
