@@ -13,7 +13,7 @@ dotfilesDirectory="$(cd "$( dirname "$parentDirectory" )" && pwd -P)"
 libDirectory="$parentDirectory/lib"
 
 CURRENT_PROFILE_FILE="$dotfilesDirectory/.current-profile"
-CURRENT_PROFILE_DIR="$(cd "$(dirname "$(readlink $CURRENT_PROFILE_FILE)" )" && pwd -P)"
+CURRENT_PROFILE_DIR="$(cd "$(dirname "$(realpath $CURRENT_PROFILE_FILE)" )" && pwd -P)"
 
 source $libDirectory/system.sh
 
