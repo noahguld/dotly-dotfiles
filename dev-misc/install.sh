@@ -8,6 +8,6 @@ function install {
 
     if [ $OS = "OSX" ]; then
         brew-install-with-tap "universal-ctags/universal-ctags" "universal-ctags/universal-ctags/universal-ctags" "--HEAD"
-        brew-install "clang-format"
+        brew-install "clang-format" "--HEAD"
     fi
 }
