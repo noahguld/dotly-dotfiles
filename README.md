@@ -16,6 +16,13 @@ cd ~/.config/dotly
 
 Note that Dotly can be installed anywhere and profiles can be seperate from dotly as well.
 
+### Note
+If you're not using the zsh module or prefer bash - add the following to the top of the profile:
+```sh
+export DOTLY=~/.config/dotly/
+source $DOTLY/bin/startup.sh
+```
+
 ## About
 
 > More info coming soon
