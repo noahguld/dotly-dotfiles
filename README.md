@@ -11,7 +11,7 @@ Yet another work in progress dotfile manager
 ```sh
 git clone https://github.com/KarelCasier/dotly-dotfiles ~/.config/dotly
 cd ~/.config/dotly
-./bin/dotly install ~/.config/dotly/profile-mac
+./bin/dotly install ~/.config/dotly/mac-profile
 ```
 
 Note that Dotly can be installed anywhere and profiles can be seperate from dotly as well.
