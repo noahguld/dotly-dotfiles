@@ -1,6 +1,8 @@
 #!/bin/sh
 
 function install {
+    link_file $MODULE_DIR/.tmux.conf ~/.tmux.conf
+
     if [ $OS = "OSX" ]; then
         brew-install "tmux"
     fi
