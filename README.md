@@ -6,6 +6,10 @@ Yet another work in progress dotfile manager
 
 > Dotly will be migrated to it's own repo, apart from my personal dotfiles, soon &trade;
 
+## Pre Install
+
+- Sign into the app store to allow apps to be installed.
+
 ## Install
 
 ```sh
