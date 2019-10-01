@@ -1,6 +1,6 @@
 [user]
-	name = Karel Casier
-	email = KarelCasier@me.com
+	name = Noah Guld
+	email = nguld12@gmail.com
 [filter "lfs"]
 	smudge = git-lfs smudge %f
 	required = true
