@@ -73,6 +73,7 @@ cask "spotify-notifications"
 cask 'the-unarchiver'
 cask 'iina'                                         # Video Player
 cask 'contexts'                                     # Task Switcher
+cask 'WhatsApp'
 
 #Mac AppStore
 mas "Xcode", id: 497799835
