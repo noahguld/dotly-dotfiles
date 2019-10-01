@@ -67,7 +67,6 @@ cask 'firefox'
 cask 'github'
 cask 'slack'
 cask 'sourcetree'
-cask 'spectacle'                                    # Window Manager
 cask 'spotify'
 cask "spotify-notifications"
 cask 'the-unarchiver'
