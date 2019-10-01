@@ -9,6 +9,7 @@ Yet another work in progress dotfile manager
 ## Pre Install
 
 - Sign into the app store to allow apps to be installed.
+- Update git Name and Email in git/.gitconfig
 
 ## Install
 
