@@ -6,6 +6,6 @@ function install {
 
         link_file $MODULE_DIR/Shortcuts.js ~/Library/Application\ Support/Spectacle/Shortcuts.json
     else
-        err "iTerm only supports OSX"
+        err "Spectacle only supports OSX"
     fi
 }
