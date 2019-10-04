@@ -10,14 +10,13 @@ source ~/.fzf.zsh
 # Stash your environment variables in ~/.localrc. This means they'll stay out
 # of your main dotfiles repository (which may be public, like this one), but
 # you'll have access to them in your scripts.
-if [[ -a ~/.localrc ]]
+if [[ -a ~/.zshrc_local ]]
 then
-  source ~/.localrc
+  source ~/.zshrc_local
 fi
 
 # initialize autocomplete here, otherwise functions won't be loaded
 autoload -U compinit
-compinit
 
 # Better history
 # Credits to https://coderwall.com/p/jpj_6q/zsh-better-history-searching-with-arrow-keys
@@ -50,6 +49,7 @@ function zle-line-init zle-keymap-select {
 }
 zle -N zle-line-init
 zle -N zle-keymap-select
+bindkey "^?" backward-delete-char
 export KEYTIMEOUT=1
 
 export EDITOR='nvim'
