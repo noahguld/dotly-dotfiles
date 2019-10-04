@@ -51,6 +51,7 @@ brew 'terminal-notifier'
 brew 'tmuxinator-completion'
 brew "htop"
 brew "pandoc"
+brew "MisterTea/et/et"
 
 #GNU tools
 brew 'coreutils'
