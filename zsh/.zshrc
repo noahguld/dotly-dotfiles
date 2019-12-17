@@ -59,5 +59,7 @@ export NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
+eval $(thefuck --alias)
+
 fpath=(/usr/local/share/zsh-completions $fpath)
 source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
